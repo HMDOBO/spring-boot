@@ -1,0 +1,8 @@
+/.idea/*
+*/target/
+*.project
+*.classpath
+*.settings
+*.mvn
+*.springBeans
+.project
