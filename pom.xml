@@ -82,6 +82,7 @@
 	<modules>
 		<!-- 基础入门 -->
 		<module>spring-boot-quickstart</module>
+		<module>spring-boot-configuration</module>
 	</modules>
 
 </project>
