@@ -26,9 +26,11 @@ public class TestConfiguration {
 	
 	@Test
 	public void test() {
-//		System.out.println(randomProperty.getRandomValue());
+		System.out.println(randomProperty.getRandomValue());
 //		System.out.println(randomProperty.getNumber());
-		System.out.println(env.getProperty("my.secret"));
+//		System.out.println(env.getProperty("my.secret"));
+		System.out.println(randomProperty.getUuid());
+		
 	}
 	
 }
