@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 
 	<name>spring-boot项目父工程</name>
-	<description>使用spring-boot整合框架</description>
+	<description>使用spring-boot搭建项目</description>
 
 	<properties>
 		<!-- common -->
