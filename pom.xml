@@ -84,6 +84,7 @@
 		<module>spring-boot-quickstart</module>
 		<module>spring-boot-configuration</module>
 		<module>spring-boot-jsp</module>
+		<module>spring-boot-cache-ehcache</module>
 	</modules>
 
 </project>
