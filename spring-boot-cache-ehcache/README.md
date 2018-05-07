@@ -9,21 +9,23 @@ ehcache是一个纯Java的进程内缓存框架，快速，精干
 
 ### spring-boot整合Ehcache
 1. 添加maven依赖
-	<!-- spring-boot-ehcache dependency -->
-	<dependency>
-	    <groupId>org.springframework.boot</groupId>
-	    <artifactId>spring-boot-starter-cache</artifactId>
-	</dependency>
-	<dependency>
-	    <groupId>net.sf.ehcache</groupId>
-	    <artifactId>ehcache</artifactId>
-	</dependency>
-	<!-- spring-boot-ehcache dependency -->
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>net.sf.ehcache</groupId>
+		    <artifactId>ehcache</artifactId>
+		</dependency>
+
 2. 在src/main/resources/创建一个配置文件 ehcache.xml
 3. 在application.properties配置文件中启用Ehcache，并指定ehcache.xml配置文件地址
-	#echache缓存
-	spring.cache.type=ehcache
-	spring.cache.ehcache.config=classpath:ehcache.xml
+
+
+		#echache缓存
+		spring.cache.type=ehcache
+		spring.cache.ehcache.config=classpath:ehcache.xml
 4. 在spring-boot主类Application上添加注解@EnableCaching，启动Ehcache
 5. spring支持Ehcache注解方式
 	- @CachePut 放入缓存，注意格式@CachePut(value = "HelloWorldCache", key = "'key1'")，value表示使用哪个缓存，key表示缓存的key是什么，key中的字符串要用单引号
