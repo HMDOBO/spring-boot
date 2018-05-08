@@ -1,3 +1,8 @@
+# 标题
+
+标签（空格分隔）： 未分类
+
+---
 # spring-boot整合Ehcache
 
 ### Ehcache简介
@@ -34,33 +39,69 @@ ehcache是一个纯Java的进程内缓存框架，快速，精干
 	
 ```java
 /**
-	 * 放入缓存
-	 * @param value
-	 * @return
-	 */
-	@RequestMapping("/setEhcache")
-	@CachePut(value = "HelloWorldCache", key = "'key1'")
-	public String setEhcache(String value) {
-		return value;
+ * 放入缓存
+ * @param value
+ * @return
+ */
+@RequestMapping("/setEhcache")
+@CachePut(value = "HelloWorldCache", key = "'key1'")
+public String setEhcache(String value) {
+	return value;
+}
+
+/**
+ * 查询缓存
+ * @return
+ */
+@RequestMapping("/getEhcache")
+@Cacheable(value = "HelloWorldCache", key = "'key1'")
+public String getEhcache() {
+	return "没有从缓存中获取到value";
+}
+
+/**
+ * 删除缓存
+ * @return
+ */
+@RequestMapping("/delEhcache")
+@CacheEvict(value = "HelloWorldCache", key = "'key1'")
+public String delEhcache() {
+	return "删除缓存";
+}
+```
+
+### spring-boot 非注解方式使用Ehcache
+- 一般情况下spring-boot在annotation的层面实现了数据缓存的功能，基于Spring的AOP技术。所有的缓存配置只是在annotation层面配置，像声明式事务一样。
+- 那么要在代码中使用Ehcache，用非注解方式也是可以的。
+- Spring定义了CacheManager和Cache接口统一不同的缓存技术。其中CacheManager是Spring提供的各种缓存技术的抽象接口。而Cache接口包含缓存的各种操作。
+- 下面采用注入CacheManager的方式，使用Ehcache
+```java
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.test.context.junit4.SpringRunner;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class JunitTest {
+	
+	@Autowired
+	private CacheManager cacheManager;
+	
+	@Test
+	public void test() {
+		// 显示所有的Cache空间
+		System.out.println(StringUtils.join(cacheManager.getCacheNames(), ","));
+		Cache cache = cacheManager.getCache("HelloWorldCache");
+		cache.put("key1", "value1");
+		System.out.println("缓存完毕");
+		String value = cache.get("key1", String.class);
+		System.out.println(value);
 	}
 	
-	/**
-	 * 查询缓存
-	 * @return
-	 */
-	@RequestMapping("/getEhcache")
-	@Cacheable(value = "HelloWorldCache", key = "'key1'")
-	public String getEhcache() {
-		return "没有从缓存中获取到value";
-	}
-	
-	/**
-	 * 删除缓存
-	 * @return
-	 */
-	@RequestMapping("/delEhcache")
-	@CacheEvict(value = "HelloWorldCache", key = "'key1'")
-	public String delEhcache() {
-		return "删除缓存";
-	}
+}
 ```

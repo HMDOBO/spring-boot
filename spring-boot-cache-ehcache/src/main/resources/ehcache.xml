@@ -24,5 +24,8 @@
 	<cache name="HelloWorldCache" maxElementsInMemory="1000" eternal="false"
 		timeToIdleSeconds="50" timeToLiveSeconds="5" overflowToDisk="false"
 		memoryStoreEvictionPolicy="LRU" />
+	<cache name="test1" maxElementsInMemory="1000" eternal="false"
+		timeToIdleSeconds="50" timeToLiveSeconds="5" overflowToDisk="false"
+		memoryStoreEvictionPolicy="LRU" />
 		
 </ehcache>

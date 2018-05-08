@@ -18,6 +18,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
@@ -31,6 +35,12 @@
             <artifactId>ehcache</artifactId>
         </dependency>
 		<!-- spring-boot-ehcache dependency -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.4</version>
+		</dependency>
+		
 	</dependencies>
 	
 	<!-- 注：因为是练习spring-boot，不会真正打包部署，因此下面的工程就不再引用maven打包插件spring-boot-maven-plugin -->
