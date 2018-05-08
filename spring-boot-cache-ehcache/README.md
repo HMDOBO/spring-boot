@@ -31,3 +31,36 @@ ehcache是一个纯Java的进程内缓存框架，快速，精干
 	- @CachePut 放入缓存，注意格式@CachePut(value = "HelloWorldCache", key = "'key1'")，value表示使用哪个缓存，key表示缓存的key是什么，key中的字符串要用单引号
 	- @Cacheable 查询缓存，从Ehcache中查询缓存，@Cacheable(value = "HelloWorldCache", key = "'key1'")
 	- @CacheEvict 删除缓存，删除Ehcache中缓存，@CacheEvict(value = "HelloWorldCache", key = "'key1'")
+	
+```java
+/**
+	 * 放入缓存
+	 * @param value
+	 * @return
+	 */
+	@RequestMapping("/setEhcache")
+	@CachePut(value = "HelloWorldCache", key = "'key1'")
+	public String setEhcache(String value) {
+		return value;
+	}
+	
+	/**
+	 * 查询缓存
+	 * @return
+	 */
+	@RequestMapping("/getEhcache")
+	@Cacheable(value = "HelloWorldCache", key = "'key1'")
+	public String getEhcache() {
+		return "没有从缓存中获取到value";
+	}
+	
+	/**
+	 * 删除缓存
+	 * @return
+	 */
+	@RequestMapping("/delEhcache")
+	@CacheEvict(value = "HelloWorldCache", key = "'key1'")
+	public String delEhcache() {
+		return "删除缓存";
+	}
+```
