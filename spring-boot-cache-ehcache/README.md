@@ -1,8 +1,3 @@
-# 标题
-
-标签（空格分隔）： 未分类
-
----
 # spring-boot整合Ehcache
 
 ### Ehcache简介
