@@ -15,6 +15,8 @@ public class JunitTest {
 	
 	@Autowired
 	private CacheManager cacheManager;
+	@Autowired
+	private Cache cache1;
 	
 	@Test
 	public void test() {
@@ -24,6 +26,14 @@ public class JunitTest {
 		cache.put("key1", "value1");
 		System.out.println("缓存完毕");
 		String value = cache.get("key1", String.class);
+		System.out.println(value);
+	}
+	
+	@Test
+	public void test1() {
+		cache1.put("key2", "value2");
+		System.out.println("缓存完毕");
+		String value = cache1.get("key2", String.class);
 		System.out.println(value);
 	}
 	

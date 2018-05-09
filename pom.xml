@@ -85,6 +85,7 @@
 		<module>spring-boot-configuration</module>
 		<module>spring-boot-jsp</module>
 		<module>spring-boot-cache-ehcache</module>
+		<module>spring-boot-cache-redis</module>
 	</modules>
 
 </project>
