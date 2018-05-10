@@ -14,12 +14,37 @@
 	- 数组
 	- 复合结构
 4. spring-boot默认加载src/main/resources文件夹下面application.yml的配置文件
-	
+
+### 最简单方式spring-boot整合redis
+1. 添加maven依赖
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+2. application.yml配置文件中配置redis
+
 		# redis config
 		spring:
 		  redis:
 		    host: 192.168.25.111
 		    port: 6379
+		    pool:
+		     max-idle: 100
+		     min-idle: 1
+		     max-active: 1000
+		     max-wait: -1
+3. 这样spring-boot就简单的整合好了redis，使用的话在对应的地方注入RedisTemplate即可
 
-### 最简单方式spring-boot整合redis
-1. 添加maven依赖
+		@RunWith(SpringRunner.class)
+		@SpringBootTest
+		public class TestFunction {
+			@Autowired
+			private RedisTemplate redisTemplate;
+			@Test
+			public void testJedis() {
+				redisTemplate.opsForValue().set("key1", "value1");
+				System.out.println("缓存成功");
+				System.out.println("key1 = " + redisTemplate.opsForValue().get("key1"));
+			}
+		}		    

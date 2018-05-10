@@ -16,8 +16,8 @@ public class TestFunction {
 
 	@Test
 	public void testJedis() {
-//		redisTemplate.opsForValue().set("key1", "value1");
-//		System.out.println("缓存成功");
+		redisTemplate.opsForValue().set("key1", "value1");
+		System.out.println("缓存成功");
 		System.out.println("key1 = " + redisTemplate.opsForValue().get("key1"));
 	}
 }
