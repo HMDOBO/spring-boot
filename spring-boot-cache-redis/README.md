@@ -15,11 +15,11 @@
 	- 复合结构
 4. spring-boot默认加载src/main/resources文件夹下面application.yml的配置文件
 	
-	`# redis config
-	spring:
-	  redis:
-	    host: 192.168.25.111
-	    port: 6379 `
+		# redis config
+		spring:
+		  redis:
+		    host: 192.168.25.111
+		    port: 6379
 
 ### 最简单方式spring-boot整合redis
 1. 添加maven依赖
