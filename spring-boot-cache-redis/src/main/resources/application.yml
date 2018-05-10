@@ -1,0 +1,7 @@
+# redis config
+spring:
+  redis:
+    host: 192.168.25.111
+    port: 6379
+  
+    

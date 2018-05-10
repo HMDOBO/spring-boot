@@ -1,5 +1,6 @@
 # spring-boot配置文件入门
 
+## 格式为.properties配置文件
 1. spring-boot默认的properties配置文件在src/main/resources目录下的application.properties文件
 
 2. @Configuration注解放在类上面，表示该类是一个配置类
@@ -25,6 +26,8 @@
    @RunWith(SpringRunner.class)
    @SpringBootTest
        在测试类中的方法上添加@Test注解进行单元测试
+       
+## 格式为.yml配置文件
    
    
 	
