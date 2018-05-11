@@ -47,4 +47,22 @@
 				System.out.println("缓存成功");
 				System.out.println("key1 = " + redisTemplate.opsForValue().get("key1"));
 			}
-		}		    
+		}
+4. 需要注意的是RedisTemplate是spring-data-redis包下的模板类，它在操作redis的时候默认使用JdkSerializationRedisSerializer来进行序列化，所以这样存储后的key和value都会先被序列化后再放入redis，同样取值时key也要先被序列化，再去redis中取值
+
+5. 一般情况下，如没有特殊需求，这样配置redis就可以了，redis就可以正常使用了。具体特殊需求，还需要对RedisTemplate进行特殊处理，然后再注入到Spring IOC，如下
+
+		@Configuration
+		public class RedisConfig {
+			@Bean
+			public RedisTemplate<?, ?> redisTemplate(@Autowired RedisTemplate<?, ?> redisTemplate) {
+				redisTemplate.setDefaultSerializer(new StringRedisSerializer());
+				return redisTemplate;
+			}
+		}
+上面是对IOC容器中RedisTemplate进行重写，先将IOC中RedisTemplate拿到，然后对其属性进行设置，完成之后，再把RedisTemplate放到IOC容器中。
+其实通过在配置类中依赖注入不仅是spring-boot才引进的方式，也是是Spring一直提倡的方式
+
+6. 开发中一般不会直接用RedisTemplate进行redis操作，通常会封装一层RedisUtil用来向redis存取值，封装示例com.spring.boot.utils.RedisUtil
+
+

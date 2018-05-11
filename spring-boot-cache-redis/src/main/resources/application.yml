@@ -1,12 +1,15 @@
+#Server
+server:
+  port: 8080
+
 # redis config
 spring:
   redis:
     host: 192.168.25.111
     port: 6379
+    password: 
     pool:
      max-idle: 100
      min-idle: 1
      max-active: 1000
      max-wait: -1
-  
-    
