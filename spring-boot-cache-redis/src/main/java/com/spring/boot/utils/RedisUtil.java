@@ -24,22 +24,25 @@ import org.springframework.stereotype.Component;
  * 
  * 注解@PostConstruct说明<a>https://blog.csdn.net/asdfghzqlj/article/details/75087724</a>.</p>
  * 
- * 注解@PostConstruct使用在方法上，这个方法需要在依赖注入初始化之后执行，这个方法必须在该服务类使用之前执行。<p/>
+ * 注解@PostConstruct使用在方法上，这个方法需要在依赖注入初始化之后执行，这个方法必须在该服务类使用之前执行<p/>
+ * 
+ * 当然，如果不以静态的方式使用RedisUtil中的方法，以注入的形式使用的话，那么就不需要@PostConstruct这个注解了.<p/>
  * 
  * 创建时间：2018年5月11日
  */
 @Component
 public class RedisUtil {
 	
+	/** Spring IOC 容器中的的 RedisTemplate */
 	@Autowired
-	private RedisTemplate<Object, Object> redis_template;
+	private RedisTemplate<Object, Object> IOC_Redis_Template;
 
 	private static RedisTemplate<Object, Object> redisTemplate;
 	
-	// spring 管理bean顺序是先将所有类实例化，再进行依赖注入
+	/** Spring 依赖注入完成之后，执行该方法 */
 	@PostConstruct
     public void init() {
-		redisTemplate = redis_template;
+		redisTemplate = IOC_Redis_Template;
     }
 	
 	// --------------------------------String---------------------------------------
