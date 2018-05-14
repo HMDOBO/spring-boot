@@ -34,6 +34,7 @@ spring-boot虽然支撑jsp，但是官方不推荐使用jsp，毕竟是快要淘
 		#jsp 支持
 		spring.mvc.view.suffix=.jsp
 		spring.mvc.view.prefix=/WEB-INF/jsp/
+		spring.resources.static-locations=classpath:/static/
 		
 		#关闭默认模板引擎
 		spring.thymeleaf.cache=false

@@ -14,3 +14,6 @@ spring-boot工程学习，按模块划分工程结构，spring-boot整合每一�
 ### 缓存使用
 * spring-boot-cache-ehcache(spring-boot整合ehcache缓存框架)
 * spring-boot-cache-redis(spring-boot使用redis)
+
+### 整合mybatis
+* spring-boot-mybatis(spring-boot整合mybatis框架)

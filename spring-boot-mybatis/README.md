@@ -82,8 +82,24 @@
 			}
 		}
 
-4. 代码自动生成插件mybatis-generator使用，和普通Spring一样的用法，没有区别
+4. 添加事务支持，除了启动类加@EnableTransactionManagement注解外，对于需要事务支持的方法还需要添加@Transactional注解
 
-5. 这样spring-boot就整合完mybatis了
+		@Override
+		@Transactional
+		public UserEntity selectOneUser(Long user_id) {
+			UserEntity userEntity = new UserEntity();
+			userEntity.setId(System.currentTimeMillis());
+			userEntity.setUserno(UUID.randomUUID().toString());
+			userEntity.setUsername("zhangsan");
+			userEntity.setUserpwd("123456");
+			
+			userEntityMapper.insertSelective(userEntity);
+			throw new RuntimeException("测试错误");
+			
+		}
+
+5. 代码自动生成插件mybatis-generator使用，和普通Spring一样的用法，没有区别
+
+6. 这样spring-boot就整合完mybatis了
 
 

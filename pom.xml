@@ -72,13 +72,13 @@
 	</build>
 
 	<modules>
-		<!-- 基础入门 -->
 		<module>spring-boot-quickstart</module>
 		<module>spring-boot-configuration</module>
 		<module>spring-boot-jsp</module>
 		<module>spring-boot-cache-ehcache</module>
 		<module>spring-boot-cache-redis</module>
 		<module>spring-boot-mybatis</module>
+		<module>spring-boot-quartz</module>
 	</modules>
 
 </project>
