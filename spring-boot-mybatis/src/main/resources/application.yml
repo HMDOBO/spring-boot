@@ -5,7 +5,7 @@ server:
 # database数据源配置
 spring:
     datasource:
-        name: test
+        name: spring-boot-mybatis
         url: jdbc:mysql://192.168.25.201:3306/edu_demo
         username: root
         password: root9918

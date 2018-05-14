@@ -42,8 +42,8 @@
 	</dependencies>
 	
 	<build>
-		<!-- mybatis generator 自动生成代码插件 -->
 		<plugins>
+			<!-- mybatis generator 自动生成代码插件 -->
 			<plugin>
                 <groupId>org.mybatis.generator</groupId>
 				<artifactId>mybatis-generator-maven-plugin</artifactId>
