@@ -31,9 +31,45 @@
 
 2. spring-boot整合mybatis比较简单，好多都是spring-boot自动化配置了，所以在application.yml中简单配置即可
 
-	- database数据源配置
-	- mybatis映射文件存放位置
-	- pagehelper分页插件
+		# server
+		server: 
+		  port: 8080
+		
+		# database数据源配置
+		spring:
+		    datasource:
+		        name: spring-boot-mybatis
+		        url: jdbc:mysql://192.168.25.201:3306/edu_demo
+		        username: root
+		        password: root9918
+		        # 使用druid数据源
+		        type: com.alibaba.druid.pool.DruidDataSource
+		        driver-class-name: com.mysql.jdbc.Driver
+		        filters: stat
+		        maxActive: 20
+		        initialSize: 1
+		        maxWait: 60000
+		        minIdle: 1
+		        timeBetweenEvictionRunsMillis: 60000
+		        minEvictableIdleTimeMillis: 300000
+		        validationQuery: select 'x'
+		        testWhileIdle: true
+		        testOnBorrow: false
+		        testOnReturn: false
+		        poolPreparedStatements: true
+		        maxOpenPreparedStatements: 20
+		
+		# mybatis映射文件存放位置
+		mybatis:
+		  mapper-locations: classpath:mapping/*.xml
+		
+		# pagehelper分页插件
+		pagehelper:
+		    helperDialect: mysql
+		    reasonable: true
+		    supportMethodsArguments: true
+		    params: count=countSql
+
 
 3. 启动类Application.class添加注解@MapperScan("com.spring.boot.mapper")指定mapper接口包，注解@EnableTransactionManagement启动事务
 
