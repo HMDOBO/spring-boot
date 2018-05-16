@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.spring.boot</groupId>
+		<artifactId>spring-boot-dubbo</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>spring-boot-dubbo-provider</artifactId>
+	<name>dubbo服务提供方</name>
+	
+	<dependencies>
+		<!-- dependency dubbo-api -->
+		<dependency>
+			<groupId>com.spring.boot</groupId>
+			<artifactId>spring-boot-dubbo-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- spring-boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional> <!-- 这个需要为 true 热部署才有效 -->
+		</dependency>
+		<!-- dubbo -->
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>0.1.0</version>
+            <exclusions>
+            	<exclusion>
+            		 <dependency>
+			            <groupId>org.springframework.boot</groupId>
+			            <artifactId>spring-boot-starter</artifactId>
+			            <scope>true</scope>
+			        </dependency>
+            	</exclusion>
+            </exclusions>
+        </dependency>
+	</dependencies>
+	
+	<build>
+	
+	</build>
+</project>

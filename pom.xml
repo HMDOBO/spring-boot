@@ -9,6 +9,16 @@
 
 	<name>spring-boot项目父工程</name>
 	<description>使用spring-boot搭建项目</description>
+	<url>https://github.com/hmdobo/spring-boot</url>
+
+	<developers>
+		<developer>
+			<name>hmdobo</name>
+			<email>zcjswing@163.com</email>
+			<url>https://blog.csdn.net/weixin_37162010</url>
+			<timezone>GMT+8</timezone>
+		</developer>
+	</developers>
 
 	<properties>
 		<!-- common -->
@@ -79,6 +89,7 @@
 		<module>spring-boot-cache-redis</module>
 		<module>spring-boot-mybatis</module>
 		<module>spring-boot-quartz</module>
+		<module>spring-boot-dubbo</module>
 	</modules>
 
 </project>
