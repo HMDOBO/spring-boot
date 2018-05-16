@@ -15,10 +15,10 @@ spring-boot工程学习，按模块划分工程结构，spring-boot整合每一�
 * spring-boot-cache-ehcache(spring-boot整合ehcache缓存框架)
 * spring-boot-cache-redis(spring-boot使用redis)
 
-### 整合mybatis
+### 数据访问层
 * spring-boot-mybatis(spring-boot整合mybatis框架)
 
-### 整合Quartz任务调度
+### 任务调度
 * spring-boot-quartz(spring-boot整合quartz)
 
 
