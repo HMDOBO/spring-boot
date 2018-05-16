@@ -12,7 +12,7 @@ spring-boot工程学习，按模块划分工程结构，spring-boot整合每一�
 * spring-boot-jsp (spring-boot开发jsp页面、同样能发布h5页面)
 
 ### 缓存使用
-* spring-boot-cache-ehcache （spring-boot整合ehcache缓存框架）
+* spring-boot-cache-ehcache (spring-boot整合ehcache缓存框架)
 * spring-boot-cache-redis (spring-boot使用redis)
 
 ### 数据访问层
