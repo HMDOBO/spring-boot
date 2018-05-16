@@ -1,49 +1,50 @@
 package com.spring.boot.config;
 
-import java.io.IOException;
-import java.util.Properties;
 
+import org.quartz.CronScheduleBuilder;
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
 import org.quartz.Scheduler;
-import org.quartz.ee.servlet.QuartzInitializerListener;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
+import org.quartz.Trigger;
+import org.quartz.TriggerBuilder;
+import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+
+import com.spring.boot.job.OneJob;
+import com.spring.boot.job.SecondJob;
 
 @Configuration
 public class QuartzConfig {
 
-	@Bean(name="SchedulerFactory")
-    public SchedulerFactoryBean schedulerFactoryBean() throws IOException {
-        SchedulerFactoryBean factory = new SchedulerFactoryBean();
-        factory.setQuartzProperties(quartzProperties());
-        return factory;
-    }
-	
 	@Bean
-    public Properties quartzProperties() throws IOException {
-        PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        propertiesFactoryBean.setLocation(new ClassPathResource("/quartz.properties"));
-        //在quartz.properties中的属性被读取并注入后再初始化对象
-        propertiesFactoryBean.afterPropertiesSet();
-        return propertiesFactoryBean.getObject();
-    }
-	
-	/*
-     * quartz初始化监听器
-     */
-    @Bean
-    public QuartzInitializerListener executorListener() {
-       return new QuartzInitializerListener();
-    }
+	public TriggerBuilder<Trigger> trigger() {
+		return TriggerBuilder.newTrigger();
+	}
     
     /*
      * 通过SchedulerFactoryBean获取Scheduler的实例
      */
     @Bean(name="Scheduler")
-    public Scheduler scheduler() throws IOException {
-        return schedulerFactoryBean().getScheduler();
+    public Scheduler scheduler() throws Exception {
+        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+        
+        JobDetail oneJob = JobBuilder.newJob(OneJob.class).withIdentity("job1", "group1").build();
+        JobDetail secondJob = JobBuilder.newJob(SecondJob.class).withIdentity("job2", "group2").build();
+        
+        TriggerBuilder<Trigger> newTrigger = trigger();
+        
+		Trigger oneTrigger = newTrigger.withIdentity("trigger1", "group1")
+				.withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * * * ?")).build();
+		Trigger secondTrigger = newTrigger.withIdentity("trigger2", "group2")
+				.withSchedule(CronScheduleBuilder.cronSchedule("0/4 * * * * ?")).build();
+		
+		scheduler.scheduleJob(oneJob, oneTrigger);
+		scheduler.scheduleJob(secondJob, secondTrigger);
+		
+		scheduler.start();
+		
+		return scheduler;
     }
 	
 }
