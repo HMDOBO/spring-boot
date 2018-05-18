@@ -21,7 +21,7 @@ spring-boot工程学习，按模块划分工程结构，spring-boot整合每一�
 ### 任务调度
 * spring-boot-quartz (spring-boot整合quartz)
 
-### rpc服务调度
+### RPC服务调度
 * spring-boot-dubbo (spring-boot集成dubbo, 使用官方推荐dubbo-spring-boot-starter)
 
 
