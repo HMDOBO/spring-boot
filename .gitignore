@@ -5,3 +5,5 @@
 *.settings
 *.mvn
 *.springBeans
+## 解决某些版本eclipse在maven子工程自动创建.gitignore文件，并且需要提交的问题
+**/.gitignore
