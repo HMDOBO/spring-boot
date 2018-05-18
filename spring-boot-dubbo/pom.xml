@@ -12,10 +12,10 @@
 	<packaging>pom</packaging>
 	
 	<name>spring-boot集成dubbo</name>
-	
-	
+
 	<modules>
 		<module>spring-boot-dubbo-api</module>
 		<module>spring-boot-dubbo-provider</module>
+		<module>spring-boot-dubbo-consumer</module>
 	</modules>
 </project>
