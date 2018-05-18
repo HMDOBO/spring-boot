@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-boot-dubbo￦ﾚﾴ￩ﾜﾲapi￥ﾷﾥ￧ﾨﾋ
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: com.spring.boot
+Build-Jdk: 1.8.0_151
+Implementation-URL: https://github.com/hmdobo/spring-boot/spring-boot-
+ dubbo/spring-boot-dubbo-api
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
