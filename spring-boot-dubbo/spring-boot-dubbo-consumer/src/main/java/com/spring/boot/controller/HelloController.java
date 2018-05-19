@@ -9,9 +9,11 @@ import com.spring.boot.api.HelloService;
 @RestController
 public class HelloController {
 	
+	// 去掉url = "dubbo://localhost:12345"，添加registry = "${dubbo.registry.id}"，使用zookeeper注册中心
 	@Reference(version = "1.0.0",
             application = "${dubbo.application.id}",
-            url = "dubbo://localhost:12345")
+            url = "dubbo://localhost:12345"/*,
+            registry = "${dubbo.registry.id}"*/)	
 	private HelloService helloService;
 
 	@RequestMapping("/sayHello")
