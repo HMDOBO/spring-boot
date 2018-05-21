@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>com.spring.boot</groupId>
 		<artifactId>spring-boot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>spring-boot-quartz</artifactId>
 	<name>spring-boot整合定时框架quzrtz</name>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -27,12 +27,12 @@
 		</dependency>
 		<!-- quartz -->
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-        <dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-tx</artifactId>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
@@ -40,5 +40,5 @@
 			<version>2.2.3</version>
 		</dependency>
 	</dependencies>
-	
+
 </project>

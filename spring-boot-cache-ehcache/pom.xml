@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>com.spring.boot</groupId>
 		<artifactId>spring-boot</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<artifactId>spring-boot-cache-ehcache</artifactId>
 	<name>Ehcache本地缓存使用</name>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -27,31 +27,23 @@
 		</dependency>
 		<!-- spring-boot-ehcache dependency -->
 		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-        </dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
 		<!-- spring-boot-ehcache dependency -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.4</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
 		</dependency>
-		
+
 	</dependencies>
-	
+
 	<!-- 注：因为是练习spring-boot，不会真正打包部署，因此下面的工程就不再引用maven打包插件spring-boot-maven-plugin -->
-	<!-- 
-		<build>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</build>
-	 -->
+	<!-- <build> <plugins> <plugin> <groupId>org.springframework.boot</groupId> 
+		<artifactId>spring-boot-maven-plugin</artifactId> </plugin> </plugins> </build> -->
 </project>
