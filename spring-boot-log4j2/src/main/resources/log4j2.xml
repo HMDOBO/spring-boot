@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- log4j2本身的日志信息打印级别 TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
-<Configuration status="WARN">
-	<properties>
+<!-- Configuration为根节点 -->
+<Configuration status="WARN"><!-- status: log4j2本身的日志信息打印级别 TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
+	
+	<properties>	<!-- 定义property属性，便于复用 -->
 		<property name="LOG_HOME">D:/logs</property>
 		<property name="FILE_NAME">mylog</property>
 	</properties>
-	<!-- 日志的输出目的地 -->
+	
+	<!-- Appenders配置日志的输出目的地 -->
 	<Appenders>
-		<Console name="Console" target="SYSTEM_OUT">	<!-- Console输出到控制台 -->
+		<!-- Console输出到控制台 -->
+		<Console name="Console" target="SYSTEM_OUT">	
 			<!-- PatternLayout输出日志时的格式 %d{HH:mm:ss.SSS}输出到毫秒的时间 %t 输出当前线程名称 %-5level 
 				输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0 %logger 输出logger名称，因为Root Logger没有名称，所以没有输出 
 				%msg 日志文本 %n 换行 -->
 			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
 		</Console>
+		
 		<!-- 
-			RollingRandomAccessFile按时间和文件大小滚动Appender 不光只是名字长，
+			1. RollingRandomAccessFile按时间和文件大小滚动Appender 不光只是名字长，
 			相比RollingFileAppender有很大的性能提升，官网宣称是20-200%。 
 			Rolling的意思是当满足一定条件后，就重命名原日志文件用于备份，并从新生成一个新的日志文件。 
 			例如需求是每天生成一个日志文件，但是如果一天内的日志文件体积已经超过1G，就从新生成， 
 			两个条件满足一个即可。
-			fileName: 日志文件位置
-			filePattern: 指定当发生Rolling时，文件的转移和重命名规则
-			SizeBasedTriggeringPolicy: 指定当文件体积大于size指定的值时，触发Rolling
-			DefaultRolloverStrategy: 指定最多保存的文件个数
-			TimeBasedTriggeringPolicy: 这个配置需要和filePattern结合使用，注意filePattern中配置的文件
+			2. fileName: 日志文件位置
+			3. filePattern: 指定当发生Rolling时，文件的转移和重命名规则
+			4. SizeBasedTriggeringPolicy: 指定当文件体积大于size指定的值时，触发Rolling
+			5. DefaultRolloverStrategy: 指定最多保存的文件个数
+			6. TimeBasedTriggeringPolicy: 这个配置需要和filePattern结合使用，注意filePattern中配置的文件
 			重命名规则是${FILE_NAME}-%d{yyyy-MM-dd HH-mm}-%i，最小的时间粒度是mm，即分钟，
 			TimeBasedTriggeringPolicy指定的size是1，结合起来就是每1分钟生成一个新文件。
 			如果改成%d{yyyy-MM-dd HH}，最小粒度为小时，则每一个小时生成一个文件。
-			 -->
+		-->
 		<RollingRandomAccessFile name="MyFile"
 			fileName="${LOG_HOME}/${FILE_NAME}.log"
 			filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{yyyy-MM-dd HH-mm}-%i.log">
@@ -40,13 +44,21 @@
 			<DefaultRolloverStrategy max="20" />
 		</RollingRandomAccessFile>
 	</Appenders>
+
+	<!-- Appenders定义日志打印位置和打印格式，那么Loggers定义什么情况下打印日志，日志打印什么内容，记录什么级别的日志 -->
+	<!-- Loggers日志器: 分为根日志器root和自定义日志器 -->	
 	<Loggers>
-		<!-- 指定某个具体类下面日志记录级别 <Logger name="com.spring.boot.test.Bar" level="TRACE"/> -->
-		<!-- 一旦事件到达记录器并将其可加性设置为false，则不管它们的可加性设置如何，事件都不会传递到其任何父记录器。 <Logger name="com.spring.boot.test.Bar" 
-			level="TRACE" additivity="false"> <AppenderRef ref="Console" /> </Logger> -->
-		<Root level="TRACE">
+		
+		<!-- 自定义日志器: 自定义时需要指定每个Logger的名称name（对于命名可以以包名作为日志的名字，不同的包配置不同的级别等） -->
+		<logger name="com.spring.boot" level="info" additivity="false">
 			<AppenderRef ref="Console" />
-			<AppenderRef ref="MyFile" />
+		</logger>
+
+		<!-- 根日志器Root，作为默认的日志器，当系统找不到相对应的日志记录器时，就用这个日志记录器 -->
+		<Root level="INFO">
+			<AppenderRef ref="Console" />
+			<!-- <AppenderRef ref="MyFile" /> -->
 		</Root>
+
 	</Loggers>
 </Configuration>
