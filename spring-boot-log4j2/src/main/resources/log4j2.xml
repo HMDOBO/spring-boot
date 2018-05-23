@@ -3,7 +3,7 @@
 <Configuration status="WARN"><!-- status: log4j2本身的日志信息打印级别 TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
 	
 	<properties>	<!-- 定义property属性，便于复用 -->
-		<property name="LOG_HOME">D:/logs</property>
+		<property name="LOG_HOME">/logs</property>
 		<property name="FILE_NAME">mylog</property>
 	</properties>
 	
@@ -50,12 +50,27 @@
 	<Loggers>
 		
 		<!-- 自定义日志器: 自定义时需要指定每个Logger的名称name（对于命名可以以包名作为日志的名字，不同的包配置不同的级别等） -->
-		<logger name="com.spring.boot" level="info" additivity="false">
+		
+		<!-- 3rdparty Loggers -->
+		<logger name="org.springframework" level="error" />
+		<logger name="org.apache" level="error" />
+		<logger name="org.mybatis" level="info" />
+		<!-- mybatis sql log -->
+		<logger name="org.apache.ibatis" level="debug" />
+		
+		<!-- 如下设置基于路径记录不同等级的日志 -->
+		<logger name="com.spring.boot.controller" level="INFO" additivity="false">
 			<AppenderRef ref="Console" />
 		</logger>
-
+		<logger name="com.spring.boot.service" level="WARN" additivity="false">
+			<AppenderRef ref="Console" />
+		</logger>
+		<logger name="com.spring.boot.dao" level="DEBUG" additivity="false">
+			<AppenderRef ref="Console" />
+		</logger>
+		
 		<!-- 根日志器Root，作为默认的日志器，当系统找不到相对应的日志记录器时，就用这个日志记录器 -->
-		<Root level="INFO">
+		<Root level="INFO">	<!-- level日志打印级别：TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
 			<AppenderRef ref="Console" />
 			<!-- <AppenderRef ref="MyFile" /> -->
 		</Root>
