@@ -3,7 +3,7 @@
 <Configuration status="WARN"><!-- status: log4j2本身的日志信息打印级别 TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
 	
 	<properties>	<!-- 定义property属性，便于复用 -->
-		<property name="LOG_HOME">/logs</property>
+		<property name="LOG_HOME">logs</property>
 		<property name="FILE_NAME">mylog</property>
 	</properties>
 	
@@ -70,7 +70,7 @@
 		</logger>
 		
 		<!-- 根日志器Root，作为默认的日志器，当系统找不到相对应的日志记录器时，就用这个日志记录器 -->
-		<Root level="INFO">	<!-- level日志打印级别：TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
+		<Root level="DEBUG">	<!-- level日志打印级别：TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
 			<AppenderRef ref="Console" />
 			<!-- <AppenderRef ref="MyFile" /> -->
 		</Root>
