@@ -10,7 +10,7 @@
 	<!-- Appenders配置日志的输出目的地 -->
 	<Appenders>
 		<!-- Console输出到控制台 -->
-		<Console name="Console" target="SYSTEM_OUT">
+		<Console name="Console" target="SYSTEM_OUT">	
 			<!-- PatternLayout输出日志时的格式 %d{HH:mm:ss.SSS}输出到毫秒的时间 %t 输出当前线程名称 %-5level 
 				输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0 %logger 输出logger名称，因为Root Logger没有名称，所以没有输出 
 				%msg 日志文本 %n 换行 -->
@@ -52,12 +52,11 @@
 		<!-- 自定义日志器: 自定义时需要指定每个Logger的名称name（对于命名可以以包名作为日志的名字，不同的包配置不同的级别等） -->
 		
 		<!-- 3rdparty Loggers -->
-		<logger name="org.springframework" level="ERROR" />
-		<logger name="org.apache" level="ERROR" />
-		<logger name="org.mybatis" level="INFO" />
-		<logger name="org.hibernate.validator" level="INFO"></logger>
+		<logger name="org.springframework" level="error" />
+		<logger name="org.apache" level="error" />
+		<logger name="org.mybatis" level="info" />
 		<!-- mybatis sql log -->
-		<logger name="org.apache.ibatis" level="DEBUG" />
+		<logger name="org.apache.ibatis" level="debug" />
 		
 		<!-- 如下设置基于路径记录不同等级的日志 -->
 		<logger name="com.spring.boot.controller" level="INFO" additivity="false">
