@@ -24,4 +24,5 @@ spring-boot工程学习，按模块划分工程结构，spring-boot整合每一�
 ### RPC服务调度
 * spring-boot-dubbo (spring-boot集成dubbo, 使用官方推荐dubbo-spring-boot-starter)
 
-
+### 日志记录
+* spring-boot-log4j2 (spring-boot使用log4j2记录日志)

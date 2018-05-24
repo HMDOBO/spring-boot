@@ -2,5 +2,6 @@
 server: 
   port: 8080
 
+## log配置文件位置
 logging:
   config: classpath:log4j2.xml
