@@ -51,6 +51,7 @@
 		
 		<!-- 自定义日志器: 自定义时需要指定每个Logger的名称name（对于命名可以以包名作为日志的名字，不同的包配置不同的级别等） -->
 		
+		<!-- 第三方日志过滤，指定一些第三方框架打印日志等级 -->
 		<!-- 3rdparty Loggers -->
 		<logger name="org.springframework" level="error" />
 		<logger name="org.apache" level="error" />

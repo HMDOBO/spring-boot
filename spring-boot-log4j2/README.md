@@ -56,4 +56,6 @@ Apache Log4j2是对Log4j的升级，与其前身Log4j 1.x相比有了显着的�
 			</Loggers>
 		</Configuration>
 
-3. 
+3. 配置文件log4j2.xml一般使用/spring-boot-log4j2/src/main/resources/log4j2-config-method-two/log4j2.xml这个配置就足够了，如果有更为精细的需求使用/spring-boot-log4j2/src/main/resources/log4j2-config-method-one/log4j2.xml配置文件
+
+4. 关于log4j2.xml配置文件各个配置项的解析参考/spring-boot-log4j2/src/main/resources/log4j2-config-method-one/log4j2.xml或者https://blog.csdn.net/vbirdbest/article/details/71751835
