@@ -91,6 +91,7 @@
 		<module>spring-boot-quartz</module>
 		<module>spring-boot-dubbo</module>
 		<module>spring-boot-log4j2</module>
+		<module>spring-boot-shiro</module>
 	</modules>
 
 </project>
