@@ -14,13 +14,13 @@ public class JWTToken implements AuthenticationToken {
 	@Override
 	public Object getPrincipal() {
 		// TODO Auto-generated method stub
-		return null;
+		return token;
 	}
 
 	@Override
 	public Object getCredentials() {
 		// TODO Auto-generated method stub
-		return null;
+		return token;
 	}
 	
 	public String getToken() {

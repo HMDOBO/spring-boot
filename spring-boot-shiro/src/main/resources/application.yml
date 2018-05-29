@@ -27,7 +27,7 @@ spring:
 mybatis:
   mapper-locations: classpath:mapping/*.xml
 # 分页插件
-pagehelper:
+pagehelper: 
   helperDialect: mysql
   reasonable: true
   supportMethodsArguments: true
