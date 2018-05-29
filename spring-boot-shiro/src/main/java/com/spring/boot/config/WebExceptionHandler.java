@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class WebExceptionHandler {
 
+	/**
+	 * token 校验失败异常处理
+	 * @param e
+	 * @return
+	 */
 	@ExceptionHandler({AuthorizationException.class})
 	public String resolveAuthenticationException(Exception e) {
-		return "AuthenticationException = " + e.getMessage();
+		return "token 验证失败，请重新登录";
 	}
 	
 }

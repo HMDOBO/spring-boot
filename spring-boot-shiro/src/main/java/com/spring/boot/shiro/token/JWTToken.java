@@ -2,6 +2,11 @@ package com.spring.boot.shiro.token;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
+/**
+ * 类似UsernamePasswordToken对AuthenticationToken的实现.<br/>
+ * 
+ * 创建时间：2018年5月29日
+ */
 public class JWTToken implements AuthenticationToken {
 
 	/**

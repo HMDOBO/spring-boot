@@ -1,7 +1,6 @@
 package com.spring.boot.shiro.config;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.Filter;
@@ -37,7 +36,6 @@ public class ShiroConfig {
 	@Bean("securityManager")
 	public DefaultWebSecurityManager getManager(MyRealm realm) {
 		DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
-
 		// 使用自定义realm
 		manager.setRealm(realm);
 
@@ -53,7 +51,7 @@ public class ShiroConfig {
 	}
 
 	/**
-	 * 配置ShiroFilter过滤器.<br/>
+	 * 配置ShiroFilter过滤器，必须.<br/>
 	 * 
 	 * 使用自定义Filter
 	 * 
@@ -62,48 +60,25 @@ public class ShiroConfig {
 	 */
 	@Bean
 	public ShiroFilterFactoryBean shirFilter(DefaultWebSecurityManager securityManager) {
-		
 		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
 		shiroFilterFactoryBean.setSecurityManager(securityManager);
 
-		// TODO 如果不用session，使用token无状态设置，需要自定义filter，这也是前后端分离的趋势
-		
+		// 如果不用session，使用token无状态设置，需要自定义filter，这也是前后端分离的趋势
 		// 添加自己的过滤器并且取名为jwt
         Map<String, Filter> filterMap = new HashMap<>();
         filterMap.put("jwt", new JwtFilter());
         shiroFilterFactoryBean.setFilters(filterMap);
 		
         /*
-         * 自定义url规则
-         * http://shiro.apache.org/web.html#urls-
+         * 自定义url规则 http://shiro.apache.org/web.html#urls-
          */
         Map<String, String> filterRuleMap = new HashMap<>();
         // 所有请求通过我们自己的JWT Filter
         filterRuleMap.put("/**", "jwt");
-        // 访问401和404页面不通过我们的Filter
-//        filterRuleMap.put("/401", "anon");
+        // 登录请求不通过我们的Filter
         filterRuleMap.put("/login", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return shiroFilterFactoryBean;
-		
-		
-		
-//		Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
-//		// 注意过滤器配置顺序 不能颠倒
-//		// 配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了，登出后跳转配置的loginUrl
-////		filterChainDefinitionMap.put("/logout", "logout");
-//		// 配置不会被拦截的链接 顺序判断
-//		filterChainDefinitionMap.put("/static/**", "anon");
-//		filterChainDefinitionMap.put("/login", "anon");
-//		filterChainDefinitionMap.put("/**", "authc");
-//		// 配置shiro默认登录界面地址，前后端分离中登录界面跳转应由前端路由控制，后台仅返回json数据
-////		shiroFilterFactoryBean.setLoginUrl("/unauth");
-//		// 登录成功后要跳转的链接
-//		// shiroFilterFactoryBean.setSuccessUrl("/index");
-//		// 未授权界面;
-//		// shiroFilterFactoryBean.setUnauthorizedUrl("/403");
-//		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-//		return shiroFilterFactoryBean;
 	}
 
 	/**

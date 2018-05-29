@@ -15,7 +15,7 @@ import com.spring.boot.utils.JwtUtil;
  * 
  * 登录成功，返回带有用户id的token
  * 
- * 以后每次请求都对RequestHeader中的token信息校验
+ * 以后每次加@RequiresAuthentication注解的请求都对RequestHeader中的token信息校验
  * 
  * 创建时间：2018年5月29日
  */
@@ -25,6 +25,12 @@ public class LoginController {
 	@Autowired
 	private AdminService adminService;
 	
+	/**
+	 * 登录
+	 * @param username
+	 * @param password
+	 * @return
+	 */
 	@RequestMapping("login")
 	public String login(String username, String password) {
 		AdminEntity admin = adminService.getAdminByUsername(username);
@@ -40,12 +46,17 @@ public class LoginController {
 		return JwtUtil.sign(admin.getId(), admin.getPassword());
 	}
 	
+	/**
+	 * 测试@RequiresAuthentication注解是否起作用
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("testShiro")
 	@RequiresAuthentication
 	public String testShiro(HttpServletRequest request) {
 		System.out.println("====进入testShiro===");
 		String header = request.getHeader("Authorization");
-		return header;
+		return "本次请求的header为" + header;
 	}
 
 }

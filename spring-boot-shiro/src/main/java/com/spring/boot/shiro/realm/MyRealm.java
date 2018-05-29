@@ -44,11 +44,6 @@ public class MyRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {
-//		String token = (String) auth.getCredentials();
-		
-//		JWTToken jwtToken = (JWTToken)auth;
-//		String token = jwtToken.getToken();
-		
 		String token = (String) auth.getCredentials();
 		
 		// 获取token中的adminId
