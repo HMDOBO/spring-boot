@@ -58,22 +58,22 @@
 
 1. maven添加依赖
 
-	<dependency>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-web</artifactId>
-	</dependency>
-	<!-- shiro -->
-	<dependency>
-	    <groupId>org.apache.shiro</groupId>
-	    <artifactId>shiro-spring</artifactId>
-	    <version>1.3.2</version>
-	</dependency>
-	<!-- jwt -->
-	<dependency>
-	    <groupId>com.auth0</groupId>
-	    <artifactId>java-jwt</artifactId>
-	    <version>3.2.0</version>
-	</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- shiro -->
+		<dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-spring</artifactId>
+		    <version>1.3.2</version>
+		</dependency>
+		<!-- jwt -->
+		<dependency>
+		    <groupId>com.auth0</groupId>
+		    <artifactId>java-jwt</artifactId>
+		    <version>3.2.0</version>
+		</dependency>
 
 2. 可能是spring-boot内部并没有对shiro进行整合，spring脚手架上面也没有对shiro的整合，所以只能全手工配置的方式，将shiro注入到spring容器中。本工程模拟真实场景，采用真实数据库，整合了mybatis。
 
