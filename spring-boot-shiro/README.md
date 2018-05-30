@@ -54,7 +54,7 @@
 	
 ### 全部spring-boot + shiro + jwt使用步骤
 
-本工程受gitHub上项目https://github.com/Smith-Cruise/Spring-Boot-Shiro的启发，一些功能搬运过来，并进行特性化改造，更接近前后端分离项目，同时也添加了权限认证功能。
+本工程受gitHub上项目https://github.com/Smith-Cruise/Spring-Boot-Shiro/的启发，一些功能搬运过来，并进行特性化改造，更接近前后端分离项目，同时也添加了权限认证功能。
 
 1. maven添加依赖
 
