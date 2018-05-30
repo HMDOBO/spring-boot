@@ -28,7 +28,7 @@ import com.spring.boot.shiro.realm.MyRealm;
 public class ShiroConfig {
 
 	/**
-	 * SecurityManager
+	 * SecurityManager，必须.
 	 * 
 	 * @param realm
 	 * @return
@@ -73,7 +73,7 @@ public class ShiroConfig {
          * 自定义url规则 http://shiro.apache.org/web.html#urls-
          */
         Map<String, String> filterRuleMap = new HashMap<>();
-        // 所有请求通过我们自己的JWT Filter
+        // 所有请求通过我们自定义的JWT Filter
         filterRuleMap.put("/**", "jwt");
         // 登录请求不通过我们的Filter
         filterRuleMap.put("/login", "anon");
