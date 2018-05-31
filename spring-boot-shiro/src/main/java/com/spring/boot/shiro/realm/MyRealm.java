@@ -1,6 +1,5 @@
 package com.spring.boot.shiro.realm;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.shiro.authc.AuthenticationException;

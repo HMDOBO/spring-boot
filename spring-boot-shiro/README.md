@@ -75,7 +75,7 @@
 		    <version>3.2.0</version>
 		</dependency>
 
-2. 可能是spring-boot内部并没有对shiro进行整合，spring脚手架(http://start.spring.io/)上面也没有对shiro的整合，所以只能全手工配置的方式，将shiro注入到spring容器中。本工程模拟真实场景，采用真实数据库，整合了mybatis。
+2. 可能是spring-boot内部并没有对shiro进行整合，spring脚手架(http://start.spring.io/)上面也没有对shiro的整合，所以只能全手工配置的方式，将shiro注入到spring容器中。本工程模拟真实场景，采用真实数据库，整合了mybatis。关于日志打印，为了简单，就用console输出，方便流程观看就行。
 
 3. 所有的配置都放到com.spring.boot.shiro包下
 	* spring-boot整合shiro支持，com.spring.boot.shiro.config.ShiroConfig类
@@ -87,10 +87,9 @@
 	* 配置自定义realm，com.spring.boot.shiro.realm.MyRealm类
 		* 首先配置doGetAuthenticationInfo方法，要注意该方法因为是在Subject.login(token)的时候调用，而传统的session会话项目会在登录的时候调用Subject.login()方法。但是通过token的方式，就不在登录的时候调用Subject.login()方法了，而是在token可用性校验的时候调用
 		* 重写supports(AuthenticationToken token)方法
-		* doGetAuthorizationInfo授权方法后面介绍
+		* doGetAuthorizationInfo授权，这个较为简单，从数据库查询需要的数据即可，在controller接口上添加权限注解@RequiresPermissions("user:select")，在调用这个接口之前就会先调用授权
 	* 配置完毕，基本的使用方式在com.spring.boot.controller.LoginController类中，一个登录，一个测试请求头需要token(类似session会话中的登录状态)。
 		* 登录使用自己的逻辑，不用shiro的，登录成功后生成token，返回给登录调用者
 		* 测试请求头需要可用token(类似session会话中的登录状态)才能调用接口，在方法上加注解@RequiresAuthentication，这样就可以了
 
-4. 关于日志打印，为了简单，就用console输出，方便流程观看就行。
-
+4. 权限列表展示，admin权限添加，admin权限修改; 菜单查看权限配置。

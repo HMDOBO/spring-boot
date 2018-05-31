@@ -26,3 +26,6 @@ spring-boot工程学习，按模块划分工程结构，spring-boot整合每一�
 
 ### 日志记录
 * spring-boot-log4j2 (spring-boot使用log4j2记录日志)
+
+### 权限管理
+* spring-boot-shiro (spring-boot集成shiro, 使用jwt方式)
