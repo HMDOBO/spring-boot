@@ -75,7 +75,7 @@
 		    <version>3.2.0</version>
 		</dependency>
 
-2. 可能是spring-boot内部并没有对shiro进行整合，spring脚手架上面也没有对shiro的整合，所以只能全手工配置的方式，将shiro注入到spring容器中。本工程模拟真实场景，采用真实数据库，整合了mybatis。
+2. 可能是spring-boot内部并没有对shiro进行整合，spring脚手架(http://start.spring.io/)上面也没有对shiro的整合，所以只能全手工配置的方式，将shiro注入到spring容器中。本工程模拟真实场景，采用真实数据库，整合了mybatis。
 
 3. 所有的配置都放到com.spring.boot.shiro包下
 	* spring-boot整合shiro支持，com.spring.boot.shiro.config.ShiroConfig类
@@ -91,10 +91,6 @@
 	* 配置完毕，基本的使用方式在com.spring.boot.controller.LoginController类中，一个登录，一个测试请求头需要token(类似session会话中的登录状态)。
 		* 登录使用自己的逻辑，不用shiro的，登录成功后生成token，返回给登录调用者
 		* 测试请求头需要可用token(类似session会话中的登录状态)才能调用接口，在方法上加注解@RequiresAuthentication，这样就可以了
-
-
-
-
 
 
 
