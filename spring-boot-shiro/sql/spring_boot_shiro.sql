@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50635
 File Encoding         : 65001
 
-Date: 2018-05-25 15:01:28
+Date: 2018-05-31 14:54:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,7 +24,7 @@ CREATE TABLE `shiro_admin` (
   `username` varchar(20) NOT NULL COMMENT '用户名',
   `password` varchar(20) NOT NULL COMMENT '密码',
   `phone` varchar(20) DEFAULT NULL COMMENT '手机号',
-  `status` bigint(1) NOT NULL DEFAULT '1' COMMENT '状态（0冻结 1正常）',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态（0冻结 1正常）',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
@@ -40,7 +40,7 @@ INSERT INTO `shiro_admin` VALUES ('2', 'lisi', '123456', '15555555555', '1');
 DROP TABLE IF EXISTS `shiro_admin_role`;
 CREATE TABLE `shiro_admin_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` int(11) NOT NULL COMMENT '用户ID',
+  `admin_id` int(11) NOT NULL COMMENT '用户ID',
   `role_id` int(11) NOT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户_角色表';
@@ -174,16 +174,17 @@ DROP TABLE IF EXISTS `shiro_role`;
 CREATE TABLE `shiro_role` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `role_name` varchar(20) NOT NULL COMMENT '角色名',
+  `role_code` varchar(20) DEFAULT NULL COMMENT '角色权限码',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- ----------------------------
 -- Records of shiro_role
 -- ----------------------------
-INSERT INTO `shiro_role` VALUES ('1', '系统管理员');
-INSERT INTO `shiro_role` VALUES ('2', '用户管理员');
-INSERT INTO `shiro_role` VALUES ('3', '商品管理员');
-INSERT INTO `shiro_role` VALUES ('4', '订单管理员');
+INSERT INTO `shiro_role` VALUES ('1', '系统管理员', 'admin');
+INSERT INTO `shiro_role` VALUES ('2', '用户管理员', 'user_manager');
+INSERT INTO `shiro_role` VALUES ('3', '商品管理员', 'item_manager');
+INSERT INTO `shiro_role` VALUES ('4', '订单管理员', 'order_manager');
 
 -- ----------------------------
 -- Table structure for shiro_role_permission
@@ -199,9 +200,9 @@ CREATE TABLE `shiro_role_permission` (
 -- ----------------------------
 -- Records of shiro_role_permission
 -- ----------------------------
-INSERT INTO `shiro_role_permission` VALUES ('1', '1', '1');
-INSERT INTO `shiro_role_permission` VALUES ('2', '1', '2');
-INSERT INTO `shiro_role_permission` VALUES ('3', '1', '12');
-INSERT INTO `shiro_role_permission` VALUES ('4', '1', '13');
-INSERT INTO `shiro_role_permission` VALUES ('5', '1', '14');
-INSERT INTO `shiro_role_permission` VALUES ('6', '1', '15');
+INSERT INTO `shiro_role_permission` VALUES ('1', '2', '1');
+INSERT INTO `shiro_role_permission` VALUES ('2', '2', '2');
+INSERT INTO `shiro_role_permission` VALUES ('3', '2', '12');
+INSERT INTO `shiro_role_permission` VALUES ('4', '2', '13');
+INSERT INTO `shiro_role_permission` VALUES ('5', '2', '14');
+INSERT INTO `shiro_role_permission` VALUES ('6', '2', '15');
