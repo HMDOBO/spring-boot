@@ -36,14 +36,25 @@ public class MyRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// 授权权限
-		System.out.println("===进入授权权限===");
+		System.out.println("===进入权限授权===");
+		
+		// 从token中获取admin_id
+		Integer adminID = JwtUtil.getAdminID(principals.toString());
 		
 		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
 		
-		Set<String> permissions = new HashSet<>();
-		permissions.add("user:create");
+		// 授权角色
+		String role = adminService.getAdminRole(adminID);
+		simpleAuthorizationInfo.addRole(role);	// 单角色
+		System.out.println("===获得" + role + "角色===");
+		// 授权操作权限
+//		Set<String> permissions = new HashSet<>();
+//		permissions.add("user:create");
+		Set<String> permissions = adminService.getAdminPermission(adminID);
 		
 		simpleAuthorizationInfo.addStringPermissions(permissions);
+		
+		System.out.println("===获得权限" + permissions + "===");
 		
 		System.out.println("===授权完毕===");
 		
@@ -78,5 +89,5 @@ public class MyRealm extends AuthorizingRealm {
 		
 		return new SimpleAuthenticationInfo(token, token, getName());
 	}
-
+	
 }

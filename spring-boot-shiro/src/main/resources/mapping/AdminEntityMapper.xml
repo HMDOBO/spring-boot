@@ -96,4 +96,30 @@
     from shiro_admin
     where username = #{username,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectAdminPermission" resultType="string" parameterType="java.lang.Integer">
+  	SELECT
+		t6.operation_code
+	FROM
+		shiro_admin t1
+	LEFT JOIN shiro_admin_role t2 ON t1.id = t2.admin_id
+	LEFT JOIN shiro_role t3 ON t2.role_id = t3.id
+	LEFT JOIN shiro_role_permission t4 ON t3.id = t4.role_id
+	LEFT JOIN shiro_permission t5 ON t4.permission_id = t5.id
+	LEFT JOIN shiro_resource_operation t6 ON t5.resource_id = t6.id
+	WHERE
+		t5.permission_type = 'OPERATION'
+	AND t1.id = #{admin_id}
+  </select>
+  
+  <select id="selectAdminRole" resultType="string" parameterType="int">
+  	SELECT
+		t3.role_code
+	FROM
+		shiro_admin t1
+	LEFT JOIN shiro_admin_role t2 ON t1.id = t2.admin_id
+	LEFT JOIN shiro_role t3 ON t2.role_id = t3.id
+	WHERE
+		t1.id = #{admin_id}
+  </select>
 </mapper>

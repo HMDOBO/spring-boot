@@ -1,5 +1,7 @@
 package com.spring.boot.service.impl;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,16 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public AdminEntity getAdminByUsername(String username) {
 		return adminEntityMapper.selectAdminByUsername(username);
+	}
+
+	@Override
+	public Set<String> getAdminPermission(Integer admin_id) {
+		return adminEntityMapper.selectAdminPermission(admin_id);
+	}
+
+	@Override
+	public String getAdminRole(Integer admin_id) {
+		return adminEntityMapper.selectAdminRole(admin_id);
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.spring.boot.mapper;
 
+import java.util.Set;
+
 import com.spring.boot.entity.AdminEntity;
 
 public interface AdminEntityMapper {
@@ -16,4 +18,8 @@ public interface AdminEntityMapper {
     int updateByPrimaryKey(AdminEntity record);
     
     AdminEntity selectAdminByUsername(String username);
+    
+    Set<String> selectAdminPermission(Integer admin_id);
+    
+    String selectAdminRole(Integer admin_id);
 }
