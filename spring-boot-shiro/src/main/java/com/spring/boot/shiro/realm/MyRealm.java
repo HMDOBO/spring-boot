@@ -1,10 +1,14 @@
 package com.spring.boot.shiro.realm;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +36,18 @@ public class MyRealm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
 		// 授权权限
-		System.out.println("====================");
-		System.out.println("授权权限");
-		System.out.println("====================");
+		System.out.println("===进入授权权限===");
 		
-		return null;
+		SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+		
+		Set<String> permissions = new HashSet<>();
+		permissions.add("user:create");
+		
+		simpleAuthorizationInfo.addStringPermissions(permissions);
+		
+		System.out.println("===授权完毕===");
+		
+		return simpleAuthorizationInfo;
 	}
 
 	/**
@@ -44,6 +55,9 @@ public class MyRealm extends AuthorizingRealm {
 	 */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {
+		
+		System.out.println("===调用自定义Realm，对RequestHeader中token进行校验===");
+		
 		String token = (String) auth.getCredentials();
 		
 		// 获取token中的adminId

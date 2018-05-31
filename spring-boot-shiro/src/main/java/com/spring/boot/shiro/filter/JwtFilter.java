@@ -36,6 +36,9 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
 	 */
 	@Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
+		
+		System.out.println("===需要验证登录权限，进入Filter过滤器===");
+		
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         String authorization = httpServletRequest.getHeader("Authorization");
 
