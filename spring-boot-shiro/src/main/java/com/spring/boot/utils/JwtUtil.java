@@ -3,8 +3,6 @@ package com.spring.boot.utils;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
-import org.springframework.util.StringUtils;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -68,13 +66,4 @@ public class JwtUtil {
         }
     }
     
-    public static void main(String[] args) {
-    	String token = sign(1, "123456");
-    	System.out.println(token);
-    	
-    	System.out.println(getAdminID(token));
-    	
-    	
-	}
-	
 }
