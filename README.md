@@ -1,6 +1,7 @@
 # spring-boot最佳实践
 
-spring-boot工程学习，按模块划分工程结构，spring-boot整合每一个小的功能都单独拿出一个工程，保证每个工程都能独立运行。spring-boot脚手架地址http://start.spring.io/。每个模块的详细介绍在工程下的README.md文件里
+spring-boot工程学习，按模块划分工程结构，spring-boot整合每一个小的功能都单独拿出一个工程，保证每个工程都能独立运行。spring-boot脚手架地址http://start.spring.io/ 
+每个模块的详细介绍在工程下的README.md文件里
 
 ## 项目工程目录
 ### 父工程
