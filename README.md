@@ -30,3 +30,6 @@ spring-boot工程学习，按模块划分工程结构，spring-boot整合每一�
 
 ### 权限管理
 * spring-boot-shiro (spring-boot集成shiro, 使用jwt方式)
+
+### 异步消息队列
+* spring-boot-activemq	(spring-boot使用activemq)
