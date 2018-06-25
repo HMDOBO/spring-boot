@@ -5,8 +5,9 @@ server:
 # redis config
 spring:
   redis:
-    host: 192.168.25.111
+    host: 192.168.25.201
     port: 6379
+    timeout: 10000
     password: 
     pool:
      max-idle: 100
