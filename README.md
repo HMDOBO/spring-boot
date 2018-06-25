@@ -3,6 +3,10 @@
 spring-boot工程学习，按模块划分工程结构，spring-boot整合每一个小的功能都单独拿出一个工程，保证每个工程都能独立运行。spring-boot脚手架地址http://start.spring.io/ 
 每个模块的详细介绍在工程下的README.md文件里
 
+spring-boot官方文档地址https://docs.spring.io/spring-boot/docs/1.5.15.BUILD-SNAPSHOT/reference/htmlsingle/  
+
+文档写的特别详细，相关框架的集成在这里面都能找到。
+
 ## 项目工程目录
 ### 父工程
 * spring-boot (spring-boot父工程)
