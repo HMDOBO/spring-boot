@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.spring.boot.entity.GoodsEntity;
 import com.spring.boot.service.UserService;
 
 @SpringBootTest
@@ -17,6 +18,13 @@ public class TestFunction {
 	
 	@Test
 	public void test() {
+		
+		/**
+		 * 测试sqlsession作用域
+		 */
+		
+		GoodsEntity goods = userService.selectGoods();
+		
 		System.out.println(userService.selectOneUser(1L));
 	}
 
