@@ -95,6 +95,7 @@
 		<module>spring-boot-log4j2</module>
 		<module>spring-boot-shiro</module>
 		<module>spring-boot-activemq</module>
+		<module>spring-boot-swagger</module>
 	</modules>
 
 </project>
