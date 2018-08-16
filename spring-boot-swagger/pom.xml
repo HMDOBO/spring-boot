@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>spring-boot-swagger</artifactId>
-	<name>spring-boot集成借口生成插件swagger</name>
+	<name>spring-boot集成API接口生成插件swagger</name>
 	<description>接口的文档在线自动生成</description>
 
 	<dependencies>
@@ -18,11 +18,15 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-		    <groupId>com.spring4all</groupId>
-		    <artifactId>spring-boot-starter-swagger</artifactId>
-		    <version>1.5.1.RELEASE</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
 		</dependency>
-
+		<dependency>
+			<groupId>com.spring4all</groupId>
+			<artifactId>swagger-spring-boot-starter</artifactId>
+			<version>1.7.1.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 </project>
